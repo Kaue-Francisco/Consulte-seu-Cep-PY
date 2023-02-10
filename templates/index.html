@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/439/439902.png">
+    <link rel="stylesheet" href="../static/style.css">
+    <script src="../static/function.js"></script>
+    <title>Seu CEP</title>
+</head>
+<body>
+    <!-- Header do site -->
+    <header>
+        <h1>Consulte seu CEP</h1>
+    </header>
+
+    <!-- Box das informações -->
+    <div class="box">
+        <h2>Formulário</h2>
+        <form action="{{ url_for('index') }}" method="POST">
+            <label id='title'>CEP:</label>
+            <input id='inp' type="number" name="cep"></input>
+            <p id="error">{{ aviso }}<p>
+        </form>
+        
+        <!-- Mostra os resultados da consulta -->
+        <div class='msg'>
+            {% if port == True %}
+                <p>CEP: {{ cep[:5] }}-{{ cep[5:] }}</p>
+                <p>Estado: {{ uf }}</p>
+                <p>Cidade: {{ city }}</p>
+                <p>Rua: {{ rua }}</p>
+                <p>Bairro: {{ bairro }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
